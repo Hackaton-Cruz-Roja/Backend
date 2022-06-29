@@ -79,7 +79,7 @@
             <configuration>
                 <archive>
                     <manifest>
-                        <mainClass>com.hackathon.group4.EcoApplication</mainClass>
+                        <mainClass>com.hackathon.group4.Application</mainClass>
                     </manifest>
                 </archive>
             </configuration>
