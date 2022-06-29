@@ -1,1 +1,1 @@
-# EcoWest
+# APP TITLE
