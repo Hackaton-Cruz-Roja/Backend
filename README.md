@@ -10,8 +10,23 @@ https://hackathon-final.herokuapp.com/user/find/{id}
 ### Create users POST
 https://hackathon-final.herokuapp.com/register
 
+{
+    "identificator": "48085007W",
+    "password": "123",
+    "name": "Prueba",
+    "surname": "Prueba",
+    "phone": "123",
+    "mail": "qwdwq@veqev.com",
+    "observations": "eqoihoqifhq"
+}
+
 ### Login users POST
 https://hackathon-final.herokuapp.com/authenticate
+
+{
+    "identificator": "48085007W",
+    "password": "123"
+}
 
 ### Create contact POST
 https://hackathon-final.herokuapp.com/contact/create
