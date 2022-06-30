@@ -33,7 +33,7 @@ https://hackathon-final.herokuapp.com/contact/update
 }
 
 ### Activate or desactivate contact PUT
-https://hackathon-final.herokuapp.com/contact/status/%7BcontactId%7D
+https://hackathon-final.herokuapp.com/contact/status/{contactId}
 
 {
     "idContact": 1,
@@ -41,4 +41,4 @@ https://hackathon-final.herokuapp.com/contact/status/%7BcontactId%7D
 }
 
 ### Get all contacts from one user
-https://hackathon-final.herokuapp.com/contact/find/user/%7BuserId%7D
+https://hackathon-final.herokuapp.com/contact/find/user/{userId}
