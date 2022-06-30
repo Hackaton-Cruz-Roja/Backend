@@ -1,4 +1,4 @@
-# APP TITLE
+# HAID
 
 ## Endpoints
 ### Backend URL
@@ -66,7 +66,7 @@ https://hackathon-final.herokuapp.com/contact/find/user/{userId}
     }
 ]
 
-##crear configuracion POST
+## Create configuration POST
 https://hackathon-final.herokuapp.com/configuration/create
 
 {
@@ -83,7 +83,7 @@ https://hackathon-final.herokuapp.com/configuration/create
     ]
 }
 
-##actualizar configuracion PUT
+## Actualitzation configuration PUT
 https://hackathon-final.herokuapp.com/configuration/update
 {
     "idMessage": 1,
@@ -100,7 +100,7 @@ https://hackathon-final.herokuapp.com/configuration/update
     ]
 }
 
-##consultar las configuraciones por usuarios
+## GET configurations per users
 https://hackathon-final.herokuapp.com/configuration/find/user/{userId}
 [
     {
