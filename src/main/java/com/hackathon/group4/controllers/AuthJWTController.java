@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hackathon.group4.config.JwtTokenUtil;
 import com.hackathon.group4.models.JwtRequest;
 import com.hackathon.group4.models.JwtResponse;
-import com.hackathon.group4.models.UsuarioDTO;
-import com.hackathon.group4.userServices.CustomUsuarioDetailsService;
+import com.hackathon.group4.models.UserDTO;
+import com.hackathon.group4.service.CustomUserDetailsService;
 
 @RestController
 @CrossOrigin
@@ -29,29 +29,29 @@ public class AuthJWTController {
 	private JwtTokenUtil jwtTokenUtil;
 	
 	@Autowired
-	private CustomUsuarioDetailsService customUsuarioDetailsService;
+	private CustomUserDetailsService customUserDetailsService;
 	
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
 		
-		authenticate(authenticationRequest.getNickname(), authenticationRequest.getPassword());
+		authenticate(authenticationRequest.getIdentificator(), authenticationRequest.getPassword());
 
-		 UserDetails userDetails = customUsuarioDetailsService.loadUserByUsername(authenticationRequest.getNickname());
+		 UserDetails userDetails = customUserDetailsService.loadUserByUsername(authenticationRequest.getIdentificator());
 
 
-		final String token = jwtTokenUtil.generateToken(userDetails, customUsuarioDetailsService.loadUserByUsernameJWT(authenticationRequest.getNickname()));
+		final String token = jwtTokenUtil.generateToken(userDetails, customUserDetailsService.loadUserByUsernameJWT(authenticationRequest.getIdentificator()));
 
 		return ResponseEntity.ok(new JwtResponse(token));
 	}
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public ResponseEntity<?> saveUser(@RequestBody UsuarioDTO user) throws Exception {
-		return ResponseEntity.ok(customUsuarioDetailsService.save(user));
+	public ResponseEntity<?> saveUser(@RequestBody UserDTO user) throws Exception {
+		return ResponseEntity.ok(customUserDetailsService.save(user));
 	}
-	private void authenticate(String nickname, String password) throws Exception {
+	private void authenticate(String identificator, String password) throws Exception {
 		try {
 			
-			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(nickname, password));
+			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(identificator, password));
 		} catch (DisabledException e) {
 			throw new Exception("USER_DISABLED", e);
 		} catch (BadCredentialsException e) {

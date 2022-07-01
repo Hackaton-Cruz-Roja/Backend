@@ -15,7 +15,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.hackathon.group4.userServices.CustomUsuarioDetailsService;
+import com.hackathon.group4.service.CustomUserDetailsService;
 
 import io.jsonwebtoken.ExpiredJwtException;
 
@@ -23,7 +23,7 @@ import io.jsonwebtoken.ExpiredJwtException;
 public class JwtRequestFilter extends OncePerRequestFilter{
 
 	@Autowired
-	private CustomUsuarioDetailsService customUsuarioDetailsService;
+	private CustomUserDetailsService customUserDetailsService;
 	
 	@Autowired
 	private JwtTokenUtil jwtTokenUtil; 
@@ -52,7 +52,7 @@ public class JwtRequestFilter extends OncePerRequestFilter{
 		// Once we get the token validate it.
 		if (nickname != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 			 
-			 UserDetails userDetails = this.customUsuarioDetailsService.loadUserByUsername(nickname);
+			 UserDetails userDetails = this.customUserDetailsService.loadUserByUsername(nickname);
 
 			// if token is valid configure Spring Security to manually set
 			// authentication

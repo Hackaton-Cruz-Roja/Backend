@@ -1,48 +1,44 @@
 package com.hackathon.group4.controllers;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hackathon.group4.models.DAOUsuarios;
-import com.hackathon.group4.userServices.UsuarioService;
+import com.hackathon.group4.models.DAOUser;
+import com.hackathon.group4.service.UserService;
 
 @RestController
-public class UsuarioController {
+@RequestMapping("/user")
+public class UserController {
 	
 	 @Autowired
-	 private UsuarioService usuarioService;
+	 private UserService userService;
 	 
 	 @Autowired
-		private JdbcTemplate jdbcTemplate;
+	 private JdbcTemplate jdbcTemplate;
 	 
 		
-		@GetMapping("/users")
-		public List<DAOUsuarios> getUsuarios() {
-			return usuarioService.findAllUsers();
+//		@GetMapping("/find")
+//		public List<DAOUser> getUsuarios() {
+//			return userService.findAllUsers();
+//		}
+		
+		@GetMapping("/find/{id}")
+		public Optional<DAOUser> getUsuariosById(@PathVariable int id){
+			return userService.findbyId(id);
 		}
 		
-		@GetMapping("/users/{id}")
-		public Optional<DAOUsuarios> getUsuariosById(@PathVariable int id){
-			return usuarioService.findbyId(id);
-		}
-		
-		@PostMapping("/users/adduser")
-		public DAOUsuarios addUsuarios(@RequestBody DAOUsuarios usuario) {
-			return  usuarioService.saveUsuario(usuario);
-		}
+		/*@PostMapping("/adduser")
+		public DAOUser addUsuarios(@RequestBody DAOUser user) {
+			return  userService.saveUser(user);
+		}*/
 		
 		/*
 		@PostMapping("/users/deleteuser/{id}")

@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
-import com.hackathon.group4.models.DAOUsuarios;
+import com.hackathon.group4.models.DAOUser;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -52,10 +52,10 @@ public class JwtTokenUtil implements Serializable{
 	}
 	
 	//genera el token para el usuario
-		public String generateToken(UserDetails userDetails, DAOUsuarios daoUsuarios) {
+		public String generateToken(UserDetails userDetails, DAOUser daoUser) {
 			Map<String, Object> claims = new HashMap<>();
-			claims.put("id_user", daoUsuarios.getId_user());
-			claims.put("mail", daoUsuarios.getMail());
+			claims.put("id_user", daoUser.getIdUser());
+			claims.put("mail", daoUser.getMail());
 			return doGenerateToken(claims, userDetails.getUsername());
 		}
 

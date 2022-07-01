@@ -2,8 +2,6 @@ package com.hackathon.group4.models;
 
 import javax.persistence.*;
 
-import org.springframework.http.HttpStatus;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.*;
@@ -12,15 +10,15 @@ import lombok.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "users")
-public class DAOUsuarios {
-	public DAOUsuarios() {
+public class DAOUser {
+	public DAOUser() {
 	}
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "id_user")
-	private int id_user;
-	@Column(name = "nickname")
-	private String nickname;
+	private int idUser;
+	@Column(name = "identificator")
+	private String identificator;
 	@Column(name = "password",length = 3000)
 	@JsonIgnore
 	private String password;
@@ -30,9 +28,9 @@ public class DAOUsuarios {
 	private String surname;
 	@Column(name = "mail")
 	private String mail;
-	@Column(name = "register_date")
-	private String register_date;
+	@Column(name = "phone")
+	private String phone;
+	@Column(name = "observations")
+	private String observations;
 
-	
-	
 }

@@ -1,7 +1,7 @@
 package com.hackathon.group4.controllers;
 
 import com.hackathon.group4.responses.UploadResponse;
-import com.hackathon.group4.userServices.FileStorageService;
+import com.hackathon.group4.service.FileStorageService;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

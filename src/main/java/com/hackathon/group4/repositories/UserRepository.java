@@ -1,14 +1,12 @@
 package com.hackathon.group4.repositories;
 
-import java.util.Optional;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.hackathon.group4.models.DAOUsuarios;
+import com.hackathon.group4.models.DAOUser;
 
 @Repository
-public interface UsuarioRepositorio extends JpaRepository<DAOUsuarios, Integer> {
+public interface UserRepository extends JpaRepository<DAOUser, Integer> {
 
 	
 	/*
